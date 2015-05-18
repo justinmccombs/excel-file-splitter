@@ -50,24 +50,35 @@ class ExcelSplitterService {
         $this->uuid = $this->generateUuid();
     }
 
+    /**
+     * Sets the path of the file to process
+     *
+     * @param string $filePath
+     * @return $this
+     */
     public function setFilePath($filePath)
     {
         $this->filePath = $filePath;
         return $this;
     }
 
+    /**
+     * Sets the chunk size, or how many rows should be in each output file
+     *
+     * @param $chunkSize
+     * @return $this
+     */
     public function setChunkSize($chunkSize)
     {
         $this->chunkSize = $chunkSize;
         return $this;
     }
 
-    public function setHeaderCount($headerCount)
-    {
-        $this->headerCount = $headerCount;
-        return $this;
-    }
-
+    /**
+     * Split the file up into smaller chunks.
+     *
+     * @throws \Exception
+     */
     public function split()
     {
         if ( ! $this->filePath )
@@ -101,28 +112,36 @@ class ExcelSplitterService {
         $zipper->make($this->getZipFileName())->add($this->filesToZip->toArray())->close();
 
         // Delete Temporary Files
-//        $this->filesToZip->each(function($filePath) use(&$zipper) {
-//            \File::delete($filePath);
-//        });
-//        \File::deleteDirectory($this->getTempFilePath());
-//
+        \File::deleteDirectory($this->getTempFilePath());
     }
 
-    public function download()
-    {
-
-    }
-
+    /**
+     * Return the full path and filename of the zip file to save and return.
+     *
+     * @return string
+     */
     public function getZipFileName()
     {
         return storage_path('zipped/'.$this->uuid.'.zip');
     }
 
+    /**
+     * Return the temporary path where the split up sheets
+     * will sit until they're zipped up.
+     *
+     * @return string
+     */
     protected function getTempFilePath()
     {
         return storage_path('temp/'.$this->uuid.'/');
     }
 
+    /**
+     * Generates a Uuid, then returns the first 8 characters so our
+     * file names remain short and manageable
+     *
+     * @return mixed
+     */
     protected function generateUuid()
     {
         $uuid = Uuid::uuid4();
