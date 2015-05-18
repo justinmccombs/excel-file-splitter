@@ -88,7 +88,7 @@ class ExcelSplitterService {
         $this->loadDataIntoPages();
 
         // Export the pages to separate files
-        $this->splitPagesToFiles();
+        $this->exportPagesToFiles();
 
         // Zip files together, delete temporary files
         $this->zipFiles();
@@ -97,9 +97,25 @@ class ExcelSplitterService {
     }
 
     /**
+     * Loads the file, and splits the data into $this->pages
+     */
+    protected function loadDataIntoPages()
+    {
+        // Load Excel File
+        Excel::load($this->filePath, function(LaravelExcelReader $reader) {
+            $this->data = new Collection($reader->toArray());
+        });
+
+        // Create Pages collection based on set chunkSize
+        $this->data->chunk($this->chunkSize)->each(function($results) {
+            $this->pages->push($results->toArray());
+        });
+    }
+
+    /**
      * Exports $this->pages into separate files
      */
-    protected function splitPagesToFiles()
+    protected function exportPagesToFiles()
     {
         // Output each page to a file
         $pageNumber = 1;
@@ -118,22 +134,6 @@ class ExcelSplitterService {
 
             // Increment page number for the next filename
             $pageNumber++;
-        });
-    }
-
-    /**
-     * Loads the file, and splits the data into $this->pages
-     */
-    protected function loadDataIntoPages()
-    {
-        // Load Excel File
-        Excel::load($this->filePath, function(LaravelExcelReader $reader) {
-            $this->data = new Collection($reader->toArray());
-        });
-
-        // Create Pages collection based on set chunkSize
-        $this->data->chunk($this->chunkSize)->each(function($results) {
-            $this->pages->push($results->toArray());
         });
     }
 
