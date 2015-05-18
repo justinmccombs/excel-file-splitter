@@ -145,6 +145,10 @@ return [
 		'ExcelSplit\Providers\EventServiceProvider',
 		'ExcelSplit\Providers\RouteServiceProvider',
 
+		'Illuminate\Html\HtmlServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Chumper\Zipper\ZipperServiceProvider'
+
 	],
 
 	/*
@@ -193,6 +197,10 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 
+		'Form'      => 'Illuminate\Html\FormFacade',
+		'HTML'      => 'Illuminate\Html\HtmlFacade',
+		'Excel'     => 'Maatwebsite\Excel\Facades\Excel',
+		'Zipper'    => 'Chumper\Zipper\Zipper',
 	],
 
 ];
