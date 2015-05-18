@@ -96,6 +96,8 @@ class ExcelSplitterService {
 
         // Output each page to a file
         $pageNumber = 1;
+
+        // Loop through pages and create an xls file for each page
         $this->pages->each(function($pageData) use(&$pageNumber) {
             $filename = $this->uuid.'-'.$pageNumber;
             Excel::create($filename, function($excel) use($pageData) {
@@ -103,13 +105,19 @@ class ExcelSplitterService {
                     $sheet->fromArray($pageData);
                 });
             })->store('xls', $this->getTempFilePath());
+
+            // Push filename to filesToZip collection
             $this->filesToZip->push($this->getTempFilePath().$filename.'.xls');
+
+            // Increment page number for the next filename
             $pageNumber++;
         });
 
         // Zip Files
         $zipper = new Zipper;
-        $zipper->make($this->getZipFileName())->add($this->filesToZip->toArray())->close();
+        $zipper->make($this->getZipFileName())      // Set zipfile name
+            ->add($this->filesToZip->toArray())     // Set files to zip
+            ->close();                              // Compress files and save
 
         // Delete Temporary Files
         \File::deleteDirectory($this->getTempFilePath());
