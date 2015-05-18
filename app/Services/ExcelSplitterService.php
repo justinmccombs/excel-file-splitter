@@ -84,16 +84,23 @@ class ExcelSplitterService {
         if ( ! $this->filePath )
             throw new \Exception('Cannot have a blank file path.');
 
-        // Load Excel File
-        Excel::load($this->filePath, function(LaravelExcelReader $reader) {
-            $this->data = new Collection($reader->toArray());
-        });
+        // Load in data, split into pages
+        $this->loadDataIntoPages();
 
-        // Create Pages collection based on set chunkSize
-        $this->data->chunk($this->chunkSize)->each(function($results) {
-            $this->pages->push($results->toArray());
-        });
+        // Export the pages to separate files
+        $this->splitPagesToFiles();
 
+        // Zip files together, delete temporary files
+        $this->zipFiles();
+
+        return true;
+    }
+
+    /**
+     * Exports $this->pages into separate files
+     */
+    protected function splitPagesToFiles()
+    {
         // Output each page to a file
         $pageNumber = 1;
 
@@ -112,12 +119,35 @@ class ExcelSplitterService {
             // Increment page number for the next filename
             $pageNumber++;
         });
+    }
 
+    /**
+     * Loads the file, and splits the data into $this->pages
+     */
+    protected function loadDataIntoPages()
+    {
+        // Load Excel File
+        Excel::load($this->filePath, function(LaravelExcelReader $reader) {
+            $this->data = new Collection($reader->toArray());
+        });
+
+        // Create Pages collection based on set chunkSize
+        $this->data->chunk($this->chunkSize)->each(function($results) {
+            $this->pages->push($results->toArray());
+        });
+    }
+
+    /**
+     * Zips the files in $this->filesToZip, saves the zip file,
+     * and deletes the temporary files.
+     */
+    protected function zipFiles()
+    {
         // Zip Files
         $zipper = new Zipper;
         $zipper->make($this->getZipFileName())      // Set zipfile name
-            ->add($this->filesToZip->toArray())     // Set files to zip
-            ->close();                              // Compress files and save
+        ->add($this->filesToZip->toArray())     // Set files to zip
+        ->close();                              // Compress files and save
 
         // Delete Temporary Files
         \File::deleteDirectory($this->getTempFilePath());
@@ -148,7 +178,7 @@ class ExcelSplitterService {
      * Generates a Uuid, then returns the first 8 characters so our
      * file names remain short and manageable
      *
-     * @return mixed
+     * @return string
      */
     protected function generateUuid()
     {
