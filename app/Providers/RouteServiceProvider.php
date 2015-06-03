@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Providers;
+<?php namespace PipelineUtilities\Providers;
 
 use Illuminate\Routing\Router;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -12,7 +12,7 @@ class RouteServiceProvider extends ServiceProvider {
 	 *
 	 * @var string
 	 */
-	protected $namespace = 'ExcelSplit\Http\Controllers';
+	protected $namespace = 'PipelineUtilities\Http\Controllers';
 
 	/**
 	 * Define your route model bindings, pattern filters, etc.

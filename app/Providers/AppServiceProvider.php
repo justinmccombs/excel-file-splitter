@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Providers;
+<?php namespace PipelineUtilities\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider {
 	{
 		$this->app->bind(
 			'Illuminate\Contracts\Auth\Registrar',
-			'ExcelSplit\Services\Registrar'
+			'PipelineUtilities\Services\Registrar'
 		);
 	}
 

@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Exceptions;
+<?php namespace PipelineUtilities\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

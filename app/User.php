@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit;
+<?php namespace PipelineUtilities;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Database\Eloquent\Model;

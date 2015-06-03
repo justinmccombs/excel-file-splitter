@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Http\Requests;
+<?php namespace PipelineUtilities\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

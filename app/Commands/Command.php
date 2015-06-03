@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Commands;
+<?php namespace PipelineUtilities\Commands;
 
 abstract class Command {
 

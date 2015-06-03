@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Providers;
+<?php namespace PipelineUtilities\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

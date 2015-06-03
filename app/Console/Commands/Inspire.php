@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Console\Commands;
+<?php namespace PipelineUtilities\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Foundation\Inspiring;

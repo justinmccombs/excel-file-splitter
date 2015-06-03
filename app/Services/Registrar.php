@@ -1,6 +1,6 @@
-<?php namespace ExcelSplit\Services;
+<?php namespace PipelineUtilities\Services;
 
-use ExcelSplit\User;
+use PipelineUtilities\User;
 use Validator;
 use Illuminate\Contracts\Auth\Registrar as RegistrarContract;
 

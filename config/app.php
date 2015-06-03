@@ -139,11 +139,11 @@ return [
 		/*
 		 * Application Service Providers...
 		 */
-		'ExcelSplit\Providers\AppServiceProvider',
-		'ExcelSplit\Providers\BusServiceProvider',
-		'ExcelSplit\Providers\ConfigServiceProvider',
-		'ExcelSplit\Providers\EventServiceProvider',
-		'ExcelSplit\Providers\RouteServiceProvider',
+		'PipelineUtilities\Providers\AppServiceProvider',
+		'PipelineUtilities\Providers\BusServiceProvider',
+		'PipelineUtilities\Providers\ConfigServiceProvider',
+		'PipelineUtilities\Providers\EventServiceProvider',
+		'PipelineUtilities\Providers\RouteServiceProvider',
 
 		'Illuminate\Html\HtmlServiceProvider',
 		'Maatwebsite\Excel\ExcelServiceProvider',

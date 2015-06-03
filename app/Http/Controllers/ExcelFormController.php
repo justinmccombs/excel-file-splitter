@@ -5,10 +5,10 @@
  * Time: 12:22 PM
  */
 
-namespace ExcelSplit\Http\Controllers;
+namespace PipelineUtilities\Http\Controllers;
 
 
-use ExcelSplit\Services\ExcelSplitterService;
+use PipelineUtilities\Services\ExcelSplitterService;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 

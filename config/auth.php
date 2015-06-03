@@ -28,7 +28,7 @@ return [
 	|
 	*/
 
-	'model' => 'ExcelSplit\User',
+	'model' => 'PipelineUtilities\User',
 
 	/*
 	|--------------------------------------------------------------------------

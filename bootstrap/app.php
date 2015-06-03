@@ -28,17 +28,17 @@ $app = new Illuminate\Foundation\Application(
 
 $app->singleton(
 	'Illuminate\Contracts\Http\Kernel',
-	'ExcelSplit\Http\Kernel'
+	'PipelineUtilities\Http\Kernel'
 );
 
 $app->singleton(
 	'Illuminate\Contracts\Console\Kernel',
-	'ExcelSplit\Console\Kernel'
+	'PipelineUtilities\Console\Kernel'
 );
 
 $app->singleton(
 	'Illuminate\Contracts\Debug\ExceptionHandler',
-	'ExcelSplit\Exceptions\Handler'
+	'PipelineUtilities\Exceptions\Handler'
 );
 
 /*

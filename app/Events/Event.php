@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Events;
+<?php namespace PipelineUtilities\Events;
 
 abstract class Event {
 

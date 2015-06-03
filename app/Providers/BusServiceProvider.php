@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Providers;
+<?php namespace PipelineUtilities\Providers;
 
 use Illuminate\Bus\Dispatcher;
 use Illuminate\Support\ServiceProvider;
@@ -16,7 +16,7 @@ class BusServiceProvider extends ServiceProvider {
 		$dispatcher->mapUsing(function($command)
 		{
 			return Dispatcher::simpleMapping(
-				$command, 'ExcelSplit\Commands', 'ExcelSplit\Handlers\Commands'
+				$command, 'PipelineUtilities\Commands', 'PipelineUtilities\Handlers\Commands'
 			);
 		});
 	}

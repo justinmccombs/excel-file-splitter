@@ -11,5 +11,16 @@
 |
 */
 
-Route::post('/', 'ExcelFormController@store');
-Route::get('/', 'ExcelFormController@index');
+Route::group(['prefix' => 'file-splitter'], function() {
+    Route::post('/', 'ExcelFormController@store');
+    Route::get('/', 'ExcelFormController@index');
+});
+
+Route::group([
+    'prefix' => 'auth/google',
+    'namespace' => 'Auth\GoogleRedirect'
+], function () {
+    Route::controller('/', 'GoogleRedirectController');
+});
+
+Route::get('/', 'HomeController@index');

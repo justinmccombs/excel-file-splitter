@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Http;
+<?php namespace PipelineUtilities\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -15,7 +15,7 @@ class Kernel extends HttpKernel {
 		'Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse',
 		'Illuminate\Session\Middleware\StartSession',
 		'Illuminate\View\Middleware\ShareErrorsFromSession',
-		'ExcelSplit\Http\Middleware\VerifyCsrfToken',
+		'PipelineUtilities\Http\Middleware\VerifyCsrfToken',
 	];
 
 	/**
@@ -24,9 +24,9 @@ class Kernel extends HttpKernel {
 	 * @var array
 	 */
 	protected $routeMiddleware = [
-		'auth' => 'ExcelSplit\Http\Middleware\Authenticate',
+		'auth' => 'PipelineUtilities\Http\Middleware\Authenticate',
 		'auth.basic' => 'Illuminate\Auth\Middleware\AuthenticateWithBasicAuth',
-		'guest' => 'ExcelSplit\Http\Middleware\RedirectIfAuthenticated',
+		'guest' => 'PipelineUtilities\Http\Middleware\RedirectIfAuthenticated',
 	];
 
 }

@@ -1,4 +1,4 @@
-<?php namespace ExcelSplit\Http\Controllers;
+<?php namespace PipelineUtilities\Http\Controllers;
 
 class WelcomeController extends Controller {
 

@@ -5,7 +5,7 @@
  * Time: 12:35 PM
  */
 
-namespace ExcelSplit\Services;
+namespace PipelineUtilities\Services;
 
 use Chumper\Zipper\Zipper;
 use Illuminate\Support\Collection;

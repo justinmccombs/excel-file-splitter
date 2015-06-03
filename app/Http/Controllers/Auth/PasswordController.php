@@ -1,6 +1,6 @@
-<?php namespace ExcelSplit\Http\Controllers\Auth;
+<?php namespace PipelineUtilities\Http\Controllers\Auth;
 
-use ExcelSplit\Http\Controllers\Controller;
+use PipelineUtilities\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Foundation\Auth\ResetsPasswords;
